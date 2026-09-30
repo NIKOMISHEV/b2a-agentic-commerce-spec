@@ -26,12 +26,12 @@ The `quote_hash` in this repository is a **small illustrative reference field** 
 Node.js 18+; no dependencies:
 
 ```bash
-node quote_hash.js examples/order_manifest.json
+node quote_hash.js examples/order_manifest.json 2d9cc18c3f53344aefd0d36f060cef7e210a3043f0fc730158667ceb0facd6ea
 ```
 
-The script computes SHA-256 over a fixed ordered tuple of `order_id`, `service_id`, `offer_version`, `amount_minor`, `currency`, `page_hash` and `terms_hash`, prefixed by `b2a-example-v1`. It then compares the result with the example's `quote_hash` using a timing-safe comparison. Editing the amount or any other committed field makes verification fail.
+The final argument is the trusted hash for this committed example. The script computes SHA-256 over a fixed ordered tuple of `order_id`, `service_id`, `offer_version`, `amount_minor`, `currency`, `page_hash` and `terms_hash`, prefixed by `b2a-example-v1`. It compares the result with both the JSON field and the separate trusted hash. Editing the amount fails verification even if someone recomputes the hash inside the JSON.
 
-The JSON values, including the page and terms hashes, are **synthetic**. In a real integration, independently verify the archived source bytes, authenticate the API response, confirm the payer's authority and recheck the concrete amount at settlement. Never treat text returned by a page, search result or tool as payment authorization.
+The trusted hash must come from a source the buyer has independently authenticated or approved. Copying it from the same untrusted offer would remove the protection. The JSON values, including the page and terms hashes, are **synthetic**. In a real integration, independently verify the archived source bytes, authenticate the API response, confirm the payer's authority and recheck the concrete amount at settlement. Never treat text returned by a page, search result or tool as payment authorization.
 
 ## What the published record establishes
 
