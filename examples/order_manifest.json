@@ -1,0 +1,11 @@
+{
+  "example_only": true,
+  "order_id": "demo-order-001",
+  "service_id": "demo-service",
+  "offer_version": "1",
+  "amount_minor": 1200,
+  "currency": "EUR",
+  "page_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "terms_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+  "quote_hash": "2d9cc18c3f53344aefd0d36f060cef7e210a3043f0fc730158667ceb0facd6ea"
+}
